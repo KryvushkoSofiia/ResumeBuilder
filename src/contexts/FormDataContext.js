@@ -3,7 +3,7 @@
 import { createContext, useReducer } from "react";
 
 const initialState = {
-    fullName: '',
+    fullName: 'Example',
     email: '',
     phoneNumber: '',
     gitHubURL: '',
@@ -11,27 +11,32 @@ const initialState = {
     address: '',
     city: '',
     state: '',
-    
+
 };
 
 const reducer = (state, action) => {
-    switch (action.type){
+    switch (action.type) {
         case 'ADD_FULLNAME':
-            return {...state, fullName: action.payload};
-        case 'ADD_EMAIL': 
-            return {...state, email: action.payload}
+            return { ...state, fullName: action.payload };
+        case 'ADD_EMAIL':
+            return { ...state, email: action.payload }
         default:
             return state;
     }
 
 }
 
-export const  FormDataContext = createContext();
+export const FormDataContext = createContext();
 
-export const FormDataProvider = ({ children }) =>{
+export const FormDataProvider = ({ children }) => {
 
     // State contains current state
     // Dispatch passes action to reducer to make changes to the state
     const [state, dispatch] = useReducer(reducer, initialState);
+
+    return <FormDataContext.Provider value={{ state, dispatch }}>
+        {children}
+        Hello from Context Provider
+    </FormDataContext.Provider>
 
 }

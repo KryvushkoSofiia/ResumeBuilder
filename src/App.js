@@ -1,12 +1,15 @@
 // import logo from './logo.svg';
+import React from 'react';
 import { FormDataProvider } from './contexts/FormDataContext';
 import Form from './components/Form';
-import './App.css';
+import ResumeMarkup from './components/ResumeMarkup';
+import './App.scss';
 
 function App() {
   return (
     <FormDataProvider>
       <Form />
+      <ResumeMarkup />
     </FormDataProvider>
   );
 }

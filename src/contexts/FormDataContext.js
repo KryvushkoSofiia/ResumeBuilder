@@ -1,13 +1,13 @@
 // Create Context for Form Data manipulation
 // Use useReducer for more complex state manipulation (not using UseState for separation) 
-import { createContext, useReducer } from "react";
+import React, { createContext, useReducer } from "react";
 
 const initialState = {
-    fullName: 'Example',
+    fullName: '',
     email: '',
     phoneNumber: '',
     gitHubURL: '',
-    LinkedInURL: '',
+    linkedInURL: '',
     address: '',
     city: '',
     state: '',
@@ -19,7 +19,19 @@ const reducer = (state, action) => {
         case 'ADD_FULLNAME':
             return { ...state, fullName: action.payload };
         case 'ADD_EMAIL':
-            return { ...state, email: action.payload }
+            return { ...state, email: action.payload };
+        case 'ADD_PHONENUMBER':
+            return { ...state, phoneNumber: action.payload };
+        case 'ADD_GITHUBURL':
+            return { ...state, gitHubURL: action.payload };
+        case 'ADD_LINKEDINURL':
+            return { ...state, linkedInURL: action.payload };
+        case 'ADD_ADDRESS':
+            return { ...state, address: action.payload };
+        case 'ADD_CITY':
+            return {...state, city: action.payload};
+        case 'ADD_STATE':
+            return {...state, state: action.payload};
         default:
             return state;
     }

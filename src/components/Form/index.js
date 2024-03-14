@@ -15,6 +15,13 @@ export default function Form() {
     function handlePDFCreation (e){
         e.preventDefault();
     }
+
+    function handleAddExperience (e){
+        e.preventDefault();
+    }
+    function handleAddEducation (e){
+        e.preventDefault();
+    }
     return (
         <div className={styles.form__wrapper}>
             <h1 className={styles.form_header}>Fill the inputs with your data</h1>
@@ -28,6 +35,8 @@ export default function Form() {
                 <input className={styles.input} type='text' value={state.address} onChange={(e) => handleChange(e, 'ADD_ADDRESS')} placeholder="Address"></input>
                 <input className={styles.input} type='text' value={state.city} onChange={(e) => handleChange(e, 'ADD_CITY')} placeholder="City"></input>
                 <input className={styles.input} type='text' value={state.state} onChange={(e) => handleChange(e, 'ADD_STATE')} placeholder="State"></input>
+                <button className={styles.add_button} onClick={(e) => handleAddExperience(e)}>Add Experience +</button>
+                <button className={styles.add_button} onClick={(e) => handleAddEducation(e)}>Add Education +</button>
                 <button className={styles.button} onClick={(e) => handlePDFCreation(e)}>Create PDF</button>
             </form>
         </div>

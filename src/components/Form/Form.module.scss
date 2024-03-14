@@ -4,7 +4,7 @@
     padding-bottom: 50px;
     margin: 30px auto;
     background-image: linear-gradient(to bottom, rgba(173, 216, 230, 0.8), rgba(65, 105, 225, 0.5));
-    
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,8 +16,8 @@
     width: 70%;
 }
 
-.form_header{
-    text-transform:uppercase;
+.form_header {
+    text-transform: uppercase;
     color: #2a448f;
     font-weight: light;
     font-size: 22px;
@@ -33,12 +33,30 @@
     background-color: #add8e6;
 }
 
-.button{
+@mixin hoverEffect($hoverColor, $fontColor) {
+    &:hover {
+        color: $fontColor;
+        background-color: $hoverColor;
+    }
+}
+
+@mixin button($theme: rgba(255, 0, 0, 0.7), $hoverColor: none,$fontColor: none) {
+    @include hoverEffect($hoverColor, $fontColor);
+    background: $theme;
     align-self: center;
     width: 40%;
-    background-color:  rgba(255, 0, 0, 0.7);
     margin-top: 20px;
     padding: 10px;
     border: none;
     color: #add8e6;
+}
+
+
+
+.add_button {
+    @include button($theme: #2a448f, $hoverColor: rgb(211,211,211), $fontColor: #2a448f);
+}
+
+.button {
+    @include button($hoverColor: rgb(211,211,211), $fontColor: rgb(255, 0, 0));
 }

@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState} from "react";
 import { FormDataContext } from "../../contexts/FormDataContext";
 
+
 import styles from './Form.module.scss';
+import EducationForm from "../EducationForm";
 
 
 export default function Form() {
     const { state, dispatch } = useContext(FormDataContext);
+
+    const [showEducationForm, setShowEducationForm] = useState(false);
 
 
     function handleChange(e, type) {
@@ -18,9 +22,12 @@ export default function Form() {
 
     function handleAddExperience (e){
         e.preventDefault();
+        
     }
     function handleAddEducation (e){
         e.preventDefault();
+        setShowEducationForm(true);
+
     }
     return (
         <div className={styles.form__wrapper}>
@@ -37,7 +44,11 @@ export default function Form() {
                 <input className={styles.input} type='text' value={state.state} onChange={(e) => handleChange(e, 'ADD_STATE')} placeholder="State"></input>
                 <button className={styles.add_button} onClick={(e) => handleAddExperience(e)}>Add Experience +</button>
                 <button className={styles.add_button} onClick={(e) => handleAddEducation(e)}>Add Education +</button>
+                {/* Render EducationForm component if showEducationForm is true */}
+                {showEducationForm && <EducationForm />}
+                {/* Your other buttons */}
                 <button className={styles.button} onClick={(e) => handlePDFCreation(e)}>Create PDF</button>
+                <EducationForm />
             </form>
         </div>
     )

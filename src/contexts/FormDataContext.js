@@ -11,7 +11,8 @@ const initialState = {
     address: '',
     city: '',
     state: '',
-
+    educations: [{school: "My School"}],
+    experience: [],
 };
 
 const reducer = (state, action) => {
